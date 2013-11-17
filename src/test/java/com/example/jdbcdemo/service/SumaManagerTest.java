@@ -9,45 +9,55 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-
-
-
-
-
 import com.example.jdbcdemo.domain.Trumna;
 import com.example.jdbcdemo.domain.Grabarz;
 
 public class SumaManagerTest {
 	SumaManager sumaManager = new SumaManager();
 	
-	@Before
+	private final static String NAZWA_1 = "szczęśliwa noc";
+	private final static String GATUNEK_1 = "Dębowa";
+	private final static String NAZWA_2 = "przytulny zakatek";
+	private final static String GATUNEK_2 = "sosna";
+	
+	
+	
+	@Test
 	public void before(){
-		Trumna trumna1 = new Trumna("cos", "cos", 0);
-        Trumna trumna2 = new Trumna("cos", "cos2", 1);
-        sumaManager.addTrumna(trumna1);
-        sumaManager.addTrumna(trumna2);
-        Grabarz grabarz1 = new Grabarz("Jan", "Kowalski");
-        Grabarz grabarz2 = new Grabarz("Adam", "Nowak");
-        sumaManager.addGrabarz(grabarz1);
-        sumaManager.addGrabarz(grabarz2);
+		
+		
+       
 	}
 	
 	
 	@Test
-	public void checkAdding(){
+	public void checkAddingTrumna(){
+		 Grabarz grabarz1 = new Grabarz("Jan", "Kowalski");
+		 Grabarz grabarz2 = new Grabarz("Adam", "Nowak");
+	        sumaManager.addGrabarz(grabarz1);
+	        sumaManager.addGrabarz(grabarz2);
+	    Trumna trumna1 = new Trumna(NAZWA_1, GATUNEK_1, 0);
+        Trumna trumna2 = new Trumna(NAZWA_2, GATUNEK_2, 1);
+        sumaManager.addTrumna(trumna1);
+        sumaManager.addTrumna(trumna2);
 		
 		
-		Trumna trumna = new Trumna("cis", "cioas", 1);
-		
-		sumaManager.addTrumna(trumna);
 		
 		List<Trumna> trumny = sumaManager.getTrumna();
-		Trumna tmp = trumny.get(0);
 		
 		
-//		assertEquals("cos", tmp.getNazwa());
-//		assertEquals("cos2", tmp.getGatunek_drewna());
+		for (Trumna e : trumny) {
 		
+		
+		
+		
+		
+		assertEquals(sumaManager.nazwaToString(1), e.getNazwa());
+		assertEquals(sumaManager.gatunekToString(1), e.getGatunek_drewna());
+		assertEquals(sumaManager.nazwaToString(2), e.getNazwa());
+		assertEquals(sumaManager.gatunekToString(2), e.getGatunek_drewna());
+		System.out.println("cos");
+		}
 	}
 
 	
@@ -62,10 +72,9 @@ public class SumaManagerTest {
 	
 	
 	
-	public void deleteAll(){
-		sumaManager.clearTrumna();
-		sumaManager.clearGrabarz();
-	}
+
+	
+	
 	
 	
 	

@@ -16,7 +16,7 @@ public class Trumna {
 		
 	}
 */
-	public Trumna(String gatunek_drewna, String nazwa, int grabarz) {
+	public Trumna(String nazwa, String gatunek_drewna, int grabarz) {
 		this.nazwa = nazwa;
 		this.gatunek_drewna = gatunek_drewna;
 		this.grabarz = grabarz;

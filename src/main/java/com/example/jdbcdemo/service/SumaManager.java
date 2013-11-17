@@ -72,8 +72,8 @@ public class SumaManager {
 			
 			addTrumna = connection.prepareStatement("INSERT INTO Trumna (nazwa, gatunek_drewna, grabarz) VALUES (?, ?, ?);");
 			addGrabarz = connection.prepareStatement("INSERT INTO Grabarz (imie, nazwisko) VALUES (?, ?);");
-			dropTrumna = connection.prepareStatement("DELETE FROM Trumna;");
-			dropGrabarz = connection.prepareStatement("DELETE FROM Trumna;");
+			dropTrumna = connection.prepareStatement("DROP TABLE Trumna;");
+			dropGrabarz = connection.prepareStatement("DROP TABLE Grabarz;");
 			getTrumna = connection.prepareStatement("SELECT * FROM Trumna;");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -152,6 +152,11 @@ public class SumaManager {
 	}
 
 	
-	
+	public String nazwaToString(int nr){
+		return "NAZWA_"+nr;
+	}
+	public String gatunekToString(int nr){
+		return "GATUNEK_"+nr;
+	}
 	
 }

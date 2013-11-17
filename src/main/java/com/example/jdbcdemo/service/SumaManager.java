@@ -22,7 +22,7 @@ public class SumaManager {
 	private boolean TrumnaTableExists = false;
 	private boolean GrabarzTableExists = false;
 	
-	private String createTableTrumna = "CREATE TABLE Trumna(id bigint IDENTITY, nazwa varchar(20), gatunek_drewna varchar(20))";
+	private String createTableTrumna = "CREATE TABLE Trumna(id bigint IDENTITY, nazwa varchar(20), gatunek_drewna varchar(20), grabarz int REFERENCE grabarz(id_grabarz))";
 	private String createTableGrabarz = "CREATE TABLE Grabarz(id bigint IDENTITY, imie varchar(20), nazwisko varchar(20)";
 	
 	private PreparedStatement addTrumna;
@@ -49,19 +49,19 @@ public class SumaManager {
 			while (rs.next()) {
 				if ("Trumna".equalsIgnoreCase(rs.getString("TABLE_NAME"))) {
 					TrumnaTableExists = true;
-				
+					break;
 				}
 				else if ("Grabarz".equalsIgnoreCase(rs.getString("TABLE_NAME"))){
 					GrabarzTableExists = true;
-					
+					break;
 				}
 			}
-			if (!TrumnaTableExists)
+			if (!TrumnaTableExists){
 				statement.executeUpdate(createTableTrumna);
-			
-			if (!GrabarzTableExists)
+			}
+			if (!GrabarzTableExists){
 				statement.executeUpdate(createTableGrabarz);
-			
+			}
 			
 			addTrumna = connection.prepareStatement("INSERT INTO Trumna (nazwa, gatunek_drewna) VALUES (?, ?);");
 			addGrabarz = connection.prepareStatement("INSERT INTO Trumna (imie, nazwisko) VALUES (?, ?);");
@@ -92,6 +92,21 @@ public class SumaManager {
 			e.printStackTrace();
 		}
 	}
+	public void addTrumna(Trumna trumna) {
+		
+		try {
+			addTrumna.setInt(1, trumna.getNumer());
+			addTrumna.setString(2, trumna.getNazwa());
+			addTrumna.setString(3, trumna.getGatunek_drewna());
+
+			addTrumna.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	
 	

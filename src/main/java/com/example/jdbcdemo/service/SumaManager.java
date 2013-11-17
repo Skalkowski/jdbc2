@@ -22,8 +22,8 @@ public class SumaManager {
 	private boolean TrumnaTableExists = false;
 	private boolean GrabarzTableExists = false;
 	
-	private String createTableTrumna = "CREATE TABLE Trumna(id bigint IDENTITY, nazwa varchar(20), gatunek_drewna varchar(20), grabarz int REFERENCE grabarz(id_grabarz))";
-	private String createTableGrabarz = "CREATE TABLE Grabarz(id bigint IDENTITY, imie varchar(20), nazwisko varchar(20)";
+	private String createTableTrumna = "CREATE TABLE Trumna(id bigint IDENTITY, nazwa varchar(20), gatunek_drewna varchar(20))";
+	private String createTableGrabarz = "CREATE TABLE Grabarz(id bigint IDENTITY, imie varchar(20), nazwisko varchar(20))";
 	
 	private PreparedStatement addTrumna;
 	private PreparedStatement addGrabarz;
@@ -49,11 +49,11 @@ public class SumaManager {
 			while (rs.next()) {
 				if ("Trumna".equalsIgnoreCase(rs.getString("TABLE_NAME"))) {
 					TrumnaTableExists = true;
-					break;
+					
 				}
 				else if ("Grabarz".equalsIgnoreCase(rs.getString("TABLE_NAME"))){
 					GrabarzTableExists = true;
-					break;
+					
 				}
 			}
 			if (!TrumnaTableExists){
@@ -71,6 +71,7 @@ public class SumaManager {
 			e.printStackTrace();
 		}
 	}
+
 	//polaczenie z tabela
 	Connection getConnection() {
 		return connection;

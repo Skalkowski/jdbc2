@@ -27,10 +27,10 @@ public class SumaManagerTest {
 		
 		Trumna trumna = new Trumna(2, "cis", "cioas");
 		//drop tabeli
-	//	sumaManager.clearTrumna();
+		sumaManager.clearTrumna();
 		
 		//create tabeli
-		sumaManager.addTrumna(trumna);
+	//	sumaManager.addTrumna(trumna);
 		
 //		List<Trumna> trumny = sumaManager.getTrumna();
 //		Trumna tmp = trumny.get(0);
@@ -47,6 +47,10 @@ public class SumaManagerTest {
 	public void checkConnection(){
 		assertNotNull(sumaManager.getConnection());
 	}
+	
+	
+	
+	
 	
 	
 	public void deleteAll(){

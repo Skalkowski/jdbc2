@@ -5,7 +5,10 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+
 
 
 
@@ -14,30 +17,36 @@ import org.junit.Test;
 import com.example.jdbcdemo.domain.Trumna;
 import com.example.jdbcdemo.domain.Grabarz;
 
-import org.junit.Test;
-
 public class SumaManagerTest {
 	SumaManager sumaManager = new SumaManager();
 	
+	@Before
+	public void before(){
+		Trumna trumna1 = new Trumna("cos", "cos", 0);
+        Trumna trumna2 = new Trumna("cos", "cos2", 1);
+        sumaManager.addTrumna(trumna1);
+        sumaManager.addTrumna(trumna2);
+        Grabarz grabarz1 = new Grabarz("Jan", "Kowalski");
+        Grabarz grabarz2 = new Grabarz("Adam", "Nowak");
+        sumaManager.addGrabarz(grabarz1);
+        sumaManager.addGrabarz(grabarz2);
+	}
 	
 	
 	@Test
 	public void checkAdding(){
 		
 		
-		Trumna trumna = new Trumna(2, "cis", "cioas");
-		//drop tabeli
-		sumaManager.clearTrumna();
+		Trumna trumna = new Trumna("cis", "cioas", 1);
 		
-		//create tabeli
-	//	sumaManager.addTrumna(trumna);
+		sumaManager.addTrumna(trumna);
 		
-//		List<Trumna> trumny = sumaManager.getTrumna();
-//		Trumna tmp = trumny.get(0);
+		List<Trumna> trumny = sumaManager.getTrumna();
+		Trumna tmp = trumny.get(0);
 		
-//		assertEquals(NUMER_1, tmp.getNumer());
-//		assertEquals(NAZWA_1, tmp.getNazwa());
-//		assertEquals(GATUNEK_1, tmp.getGatunek_drewna());
+		
+//		assertEquals("cos", tmp.getNazwa());
+//		assertEquals("cos2", tmp.getGatunek_drewna());
 		
 	}
 

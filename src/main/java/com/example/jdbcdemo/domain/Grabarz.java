@@ -15,7 +15,10 @@ public class Grabarz {
 		this.nazwisko = nazwisko;
 	}
 	
-	
+	public Grabarz(String imie, String nazwisko){
+		this.imie = imie;
+		this.nazwisko = nazwisko;
+	}
 	
 	public Long getId() {
 		return id;

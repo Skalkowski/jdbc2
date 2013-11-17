@@ -42,7 +42,7 @@ public class TrumnaManager {
 			while (rs.next()) {
 				if ("Trumna".equalsIgnoreCase(rs.getString("TABLE_NAME"))) {
 					tableExists = true;
-					break;
+					
 				}
 			}
 			if (!tableExists)
